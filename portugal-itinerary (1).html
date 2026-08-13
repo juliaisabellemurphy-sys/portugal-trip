@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portugal, Sept 4–12 — Trip Itinerary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azulejo: #1F4E64;
+    --azulejo-deep: #143847;
+    --teal: #2C6E71;
+    --ochre: #C17A3E;
+    --whitewash: #F3EEE2;
+    --whitewash-2: #EAE2D2;
+    --ink: #20242A;
+    --line: rgba(20,56,71,0.16);
+    --white-tile: #FBF8F1;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--whitewash);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{ font-family:'Fraunces', serif; }
+
+  /* ---------- Tile motif (signature element) ---------- */
+  .tile-row{
+    display:flex;
+    height:14px;
+    width:100%;
+    overflow:hidden;
+  }
+  .tile-row span{
+    flex:1 0 28px;
+    height:14px;
+    background-image:
+      radial-gradient(circle at 50% 50%, transparent 5.5px, var(--azulejo) 6px, var(--azulejo) 6.5px, transparent 7px);
+  }
+  .tile-row.ochre span{
+    background-image:
+      radial-gradient(circle at 50% 50%, transparent 5.5px, var(--ochre) 6px, var(--ochre) 6.5px, transparent 7px);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:var(--azulejo);
+    color:var(--white-tile);
+    padding:0 0 0 0;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:920px;
+    margin:0 auto;
+    padding:96px 32px 80px;
+    position:relative;
+    z-index:2;
+  }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#B9D3D9;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(42px, 7vw, 76px);
+    font-weight:600;
+    line-height:1.02;
+    margin:0 0 20px;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--ochre);
+  }
+  .hero-dates{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:15px;
+    color:#DCE9EA;
+    letter-spacing:0.03em;
+  }
+  .hero-tiles{
+    position:absolute;
+    inset:0;
+    opacity:0.14;
+    background-image:
+      radial-gradient(circle at 12.5% 25%, transparent 9px, #fff 10px, #fff 10.5px, transparent 11.5px),
+      radial-gradient(circle at 37.5% 25%, transparent 9px, #fff 10px, #fff 10.5px, transparent 11.5px),
+      radial-gradient(circle at 62.5% 25%, transparent 9px, #fff 10px, #fff 10.5px, transparent 11.5px),
+      radial-gradient(circle at 87.5% 25%, transparent 9px, #fff 10px, #fff 10.5px, transparent 11.5px),
+      radial-gradient(circle at 0% 75%, transparent 9px, #fff 10px, #fff 10.5px, transparent 11.5px),
+      radial-gradient(circle at 25% 75%, transparent 9px, #fff 10px, #fff 10.5px, transparent 11.5px),
+      radial-gradient(circle at 50% 75%, transparent 9px, #fff 10px, #fff 10.5px, transparent 11.5px),
+      radial-gradient(circle at 75% 75%, transparent 9px, #fff 10px, #fff 10.5px, transparent 11.5px),
+      radial-gradient(circle at 100% 75%, transparent 9px, #fff 10px, #fff 10.5px, transparent 11.5px);
+    background-size:200px 200px;
+  }
+
+  /* ---------- Sticky day nav ---------- */
+  .daynav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--white-tile);
+    border-bottom:1px solid var(--line);
+    overflow-x:auto;
+    white-space:nowrap;
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+  }
+  .daynav::-webkit-scrollbar{ display:none; }
+  .daynav-inner{
+    display:inline-flex;
+    padding:0 24px;
+  }
+  .daynav a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--azulejo);
+    text-decoration:none;
+    padding:16px 14px;
+    border-bottom:2px solid transparent;
+    opacity:0.65;
+    transition:opacity 0.15s, border-color 0.15s;
+  }
+  .daynav a:hover, .daynav a:focus-visible{
+    opacity:1;
+    border-bottom-color:var(--ochre);
+  }
+
+  /* ---------- Day sections ---------- */
+  .day{
+    max-width:920px;
+    margin:0 auto;
+    padding:72px 32px 8px;
+    scroll-margin-top:56px;
+  }
+  .day-head{
+    display:flex;
+    align-items:baseline;
+    gap:18px;
+    margin-bottom:6px;
+    flex-wrap:wrap;
+  }
+  .day-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ochre);
+    font-weight:500;
+  }
+  .day h2{
+    font-size:clamp(28px, 4vw, 38px);
+    font-weight:600;
+    margin:2px 0 6px;
+    color:var(--azulejo-deep);
+    line-height:1.1;
+  }
+  .day-sub{
+    font-size:15px;
+    color:#5A5348;
+    font-style:italic;
+    margin:0 0 30px;
+    max-width:60ch;
+  }
+  .hotel-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    background:var(--whitewash-2);
+    border:1px solid var(--line);
+    color:var(--azulejo-deep);
+    padding:6px 12px;
+    border-radius:100px;
+    margin-bottom:28px;
+  }
+  .hotel-tag::before{ content:"⌂"; color:var(--ochre); font-size:14px; }
+
+  .segments{
+    display:grid;
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:20px;
+  }
+  .segment{
+    background:var(--white-tile);
+    padding:20px 22px;
+  }
+  .segment-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:10px;
+    display:block;
+  }
+  .segment ul{
+    margin:0;
+    padding-left:0;
+    list-style:none;
+  }
+  .segment li{
+    position:relative;
+    padding-left:18px;
+    margin-bottom:8px;
+    font-size:15.5px;
+    line-height:1.5;
+    color:var(--ink);
+  }
+  .segment li:last-child{ margin-bottom:0; }
+  .segment li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:9px;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--ochre);
+  }
+  .segment p{
+    margin:0;
+    font-size:15.5px;
+    line-height:1.55;
+  }
+
+  .booked{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    background:var(--azulejo);
+    color:#fff;
+    padding:3px 9px;
+    border-radius:5px;
+    margin-left:8px;
+    vertical-align:middle;
+  }
+  .booked::before{ content:"✓"; }
+  .booking-link{
+    display:block;
+    margin-top:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--teal);
+    word-break:break-all;
+    text-decoration:none;
+    border-bottom:1px dotted var(--teal);
+    padding-bottom:1px;
+  }
+  .booking-link:hover{ color:var(--ochre); border-bottom-color:var(--ochre); }
+
+  .options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:2px;
+  }
+  .options .opt{
+    font-size:14px;
+    background:var(--whitewash-2);
+    border:1px solid var(--line);
+    padding:6px 12px;
+    border-radius:100px;
+  }
+  .opt .note{
+    display:block;
+    font-size:12px;
+    color:#7A7264;
+    font-style:italic;
+  }
+
+  .callout{
+    background:linear-gradient(135deg, var(--teal), var(--azulejo));
+    color:#fff;
+    border-radius:10px;
+    padding:22px 24px;
+    margin:20px 0;
+  }
+  .callout .segment-label{ color:#CFE7E8; }
+  .callout p{ margin:0; font-size:16px; line-height:1.55; }
+  .callout strong{ font-family:'Fraunces', serif; font-weight:600; font-size:18px; }
+
+  .day-divider{
+    padding:36px 0 0;
+  }
+
+  /* ---------- Checklist ---------- */
+  .checklist-section{
+    background:var(--azulejo-deep);
+    color:var(--white-tile);
+    margin-top:80px;
+    padding:80px 32px 100px;
+  }
+  .checklist-inner{
+    max-width:920px;
+    margin:0 auto;
+  }
+  .checklist-inner .hero-eyebrow{ color:#9FC6CC; }
+  .checklist-inner h2{
+    font-size:clamp(30px,5vw,44px);
+    font-weight:600;
+    margin:8px 0 40px;
+  }
+  .checklist-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+    gap:1px;
+    background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .check-item{
+    background:var(--azulejo-deep);
+    padding:18px 20px;
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    font-size:15px;
+  }
+  .check-item .box{
+    flex:none;
+    width:18px;
+    height:18px;
+    border:1.5px solid var(--ochre);
+    border-radius:4px;
+    margin-top:2px;
+    position:relative;
+  }
+  .check-item .box::after{
+    content:"";
+    position:absolute;
+    left:3px;
+    top:-1px;
+    width:5px;
+    height:9px;
+    border-right:2px solid var(--ochre);
+    border-bottom:2px solid var(--ochre);
+    transform:rotate(45deg);
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 24px 60px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:#8A8272;
+  }
+
+  @media (max-width:600px){
+    .hero-inner{ padding:64px 20px 56px; }
+    .day{ padding:52px 20px 4px; }
+    .segments{ border-radius:8px; }
+    .segment{ padding:16px 16px; }
+    .checklist-section{ padding:60px 20px 72px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tiles"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">A Nine-Day Route Through Portugal</div>
+    <h1>Lisbon to<br><em>the Algarve</em></h1>
+    <div class="hero-dates">SEPTEMBER 4 &nbsp;–&nbsp; 12, 2026</div>
+  </div>
+</div>
+<div class="tile-row">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<nav class="daynav">
+  <div class="daynav-inner">
+    <a href="#day1">Fri 4 · Lisbon</a>
+    <a href="#day2">Sat 5 · Lisbon</a>
+    <a href="#day3">Sun 6 · Sintra</a>
+    <a href="#day4">Mon 7 · Carvoeiro</a>
+    <a href="#day5">Tue 8 · Lagos</a>
+    <a href="#day6">Wed 9 · Benagil</a>
+    <a href="#day7">Thu 10 · Sagres</a>
+    <a href="#day8">Fri 11 · Algarve</a>
+    <a href="#checklist">Checklist</a>
+  </div>
+</nav>
+
+<!-- DAY 1 -->
+<section class="day" id="day1">
+  <div class="day-head">
+    <span class="day-date">Day 1 — Friday, Sept 4</span>
+  </div>
+  <h2>Arrive in Lisbon</h2>
+  <p class="day-sub">Your hotel sits in one of the best locations in the city — almost everything today is walkable.</p>
+  <div class="hotel-tag">Rossio Plaza Hotel</div>
+
+  <div class="segments">
+    <div class="segment">
+      <span class="segment-label">Afternoon</span>
+      <ul>
+        <li>Check into the hotel and settle in.</li>
+        <li>Walk through Rossio Square — one minute from the hotel.</li>
+        <li>Explore Rua Augusta and the pedestrian shopping streets.</li>
+        <li>Walk through the Arco da Rua Augusta.</li>
+        <li>Continue to Praça do Comércio along the waterfront.</li>
+      </ul>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Late Afternoon / Sunset — Historic District</span>
+      <ul>
+        <li>Visit the National Tile Museum.</li>
+        <li>Visit Lisbon Cathedral (Sé).</li>
+        <li>Watch sunset from Miradouro de Santa Luzia, one of Lisbon's most beautiful viewpoints.</li>
+      </ul>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Dinner — Recommended</span>
+      <div class="options">
+        <span class="opt">Ramiro</span>
+        <span class="opt">Prado</span>
+        <span class="opt">Taberna Sal Grosso</span>
+      </div>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Evening</span>
+      <ul>
+        <li>Walk through Bairro Alto.</li>
+        <li>Walk through Pink Street.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 2 -->
+<section class="day" id="day2">
+  <div class="day-head">
+    <span class="day-date">Day 2 — Saturday, Sept 5</span>
+  </div>
+  <h2>Lisbon Highlights</h2>
+
+  <div class="segments">
+    <div class="segment">
+      <span class="segment-label">Morning</span>
+      <p>Walking Tour @ 9:30 AM <span class="booked">Booked</span></p>
+      <a class="booking-link" href="https://www.getyourguide.com/lisbon-l42/lisbon-essential-tour-history-stories-lifestyle-t46394?ranking_uuid=768c019f-6399-4d6d-ab97-c1760f32dfd0&q=Walking+tours,+Lisbon&date_from=2026-09-06" target="_blank" rel="noopener">getyourguide.com — Lisbon Essential Tour →</a>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Afternoon — Explore</span>
+      <ul>
+        <li>LX Factory</li>
+        <li>MAAT waterfront area</li>
+        <li>Riverside promenade</li>
+      </ul>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Sunset — Drinks</span>
+      <div class="options"><span class="opt">Park Bar Rooftop</span></div>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Dinner</span>
+      <div class="options">
+        <span class="opt">Tom La Da Ca <span class="note">15 min walk from hotel — Alex's recco</span></span>
+        <span class="opt">Bairro do Avillez</span>
+        <span class="opt">Tapisco</span>
+        <span class="opt">Mini Bar</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 3 -->
+<section class="day" id="day3">
+  <div class="day-head">
+    <span class="day-date">Day 3 — Sunday, Sept 6</span>
+  </div>
+  <h2>Sintra Day Trip</h2>
+  <p class="day-sub">Leave Lisbon around 8:00 AM.</p>
+
+  <div class="segments">
+    <div class="segment">
+      <span class="segment-label">Morning — Visit</span>
+      <p>Pena Palace tour @ 9:30 AM <span class="booked">Booked</span> &nbsp;<span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#7A7264;">FS 26001/130653</span></p>
+      <a class="booking-link" href="https://bilheteira.parquesdesintra.pt/paymentresult?paymentType=CreditCard&id=s2aUQDqBX2QMFTmYCD2v&resourcePath=/v1/checkouts/s2aUQDqBX2QMFTmYCD2v/payment" target="_blank" rel="noopener">bilheteira.parquesdesintra.pt — payment confirmation →</a>
+      <ul style="margin-top:14px;">
+        <li>Moorish Castle</li>
+        <li>Quinta da Regaleira</li>
+      </ul>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Lunch</span>
+      <p>Lunch in Sintra's historic center.</p>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Afternoon</span>
+      <p>Return to Lisbon in the evening.</p>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Dinner</span>
+      <div class="options">
+        <span class="opt">Time Out Market</span>
+        <span class="opt">Ramiro <span class="note">if missed on Day 1</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 4 -->
+<section class="day" id="day4">
+  <div class="day-head">
+    <span class="day-date">Day 4 — Monday, Sept 7</span>
+  </div>
+  <h2>Travel to Carvoeiro</h2>
+  <p class="day-sub">Drive from Lisbon to Carvoeiro — approximately 3 hours.</p>
+  <div class="hotel-tag">Tivoli Carvoeiro Algarve Resort</div>
+
+  <div class="segments">
+    <div class="segment">
+      <span class="segment-label">Lunch in Carvoeiro</span>
+      <ul>
+        <li>A Boneca Bar — arguably the most scenic spot, perched on the cliffs by the Algar Seco rock formations.</li>
+        <li>Boneca Bar &amp; Restaurant — perfect for drinks and lighter fare with incredible views.</li>
+        <li>O Pátio — great traditional Portuguese dishes.</li>
+        <li>Restaurante O Castelo — excellent seafood with a view over the beach.</li>
+      </ul>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Explore</span>
+      <ul>
+        <li>Carvoeiro Beach walk — cafés directly on the beach, loungers for rent.</li>
+        <li>Algar Seco</li>
+        <li>Boneca Cave</li>
+        <li>The cliff boardwalk</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="segment-label">Sunset</span>
+    <p><strong>Tivoli Sky Bar</strong> — dinner @ 7:30 PM</p>
+  </div>
+</section>
+
+<!-- DAY 5 -->
+<section class="day" id="day5">
+  <div class="day-head">
+    <span class="day-date">Day 5 — Tuesday, Sept 8</span>
+  </div>
+  <h2>Lagos Lunch &amp; Beach Sitting</h2>
+
+  <div class="segments">
+    <div class="segment">
+      <span class="segment-label">Morning — Head to Lagos</span>
+      <ul>
+        <li>Explore old town Lagos.</li>
+        <li>Have lunch in Lagos.</li>
+      </ul>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Afternoon — Visit One Beach</span>
+      <ul>
+        <li>Praia do Camilo <span style="color:#7A7264; font-style:italic;">— loungers sell out early; restaurant at top of stairs</span></li>
+        <li>Praia Dona Ana <span style="color:#7A7264; font-style:italic;">— can rent loungers, has restaurants</span></li>
+        <li>Praia dos Estudantes <span style="color:#7A7264; font-style:italic;">— small beach, nothing to rent</span></li>
+      </ul>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Dinner</span>
+      <div class="options">
+        <span class="opt">Casinha do Petisco</span>
+        <span class="opt">Avenida</span>
+        <span class="opt">Don Sebastião</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 6 -->
+<section class="day" id="day6">
+  <div class="day-head">
+    <span class="day-date">Day 6 — Wednesday, Sept 9</span>
+  </div>
+  <h2>Benagil Kayak Tour + Beach Hopping</h2>
+  <p class="day-sub">Move to Lagos today.</p>
+  <div class="hotel-tag">Água Hotels Lagos Bay</div>
+
+  <div class="segments">
+    <div class="segment">
+      <span class="segment-label">8:30 AM — Benagil Kayak Tour</span>
+      <p><span class="booked">Booked</span></p>
+      <a class="booking-link" href="https://www.tripadvisor.com/AttractionProductReview-g189115-d23959713-Exclusive_Small_Group_Kayak_Tour_to_Benagil_Caves_with_4K_Photos-Carvoeiro_Faro_Di.html" target="_blank" rel="noopener">tripadvisor.com — Small Group Kayak Tour to Benagil Caves →</a>
+      <p style="margin-top:12px; font-size:14px; color:#5A5348;">You'll see: Benagil Cave, sea arches, hidden beaches, and coastal caves. Also near Praia do Carvalho (beach), reached through a cliff tunnel entrance.</p>
+    </div>
+    <div class="segment">
+      <span class="segment-label">Late Morning</span>
+      <p>Visit the Seven Hanging Valleys Trail and hit Praia da Marinha beach — a small amount of rentals; arrive early.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="segment-label">Praia da Marinha</span>
+    <p>Often considered the most beautiful beach in Portugal. <strong>Don't miss:</strong> the heart-shaped rock viewpoint, swimming, and the cliff-top views.</p>
+  </div>
+
+  <div class="segments">
+    <div class="segment">
+      <span class="segment-label">Sunset</span>
+      <p><strong style="font-family:'Fraunces', serif; font-weight:600;">Ponta da Piedade</strong> — one of the most spectacular sunset spots in Portugal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 7 -->
+<section class="day" id="day7">
+  <div class="day-head">
+    <span class="day-date">Day 7 — Thursday, Sept 10</span>
+  </div>
+  <h2>Sagres &amp; the Wild West Coast</h2>
+  <p class="day-sub">Drive approximately 40 minutes west.</p>
+
+  <div class="segments">
+    <div class="segment">
+      <span class="segment-label">Visit</span>
+      <ul>
+        <li>Fortaleza de Sagres</li>
+        <li>Praia do Beliche (beach)</li>
+        <li>Praia do Tonel (viewpoint)</li>
+        <li>Cape St. Vincent</li>
+      </ul>
+      <p style="margin-top:10px; font-size:14px; color:#5A5348; font-style:italic;">These are some of Europe's most dramatic coastal landscapes.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="segment-label">Sunset</span>
+    <p><strong>Ponta da Piedade</strong> — one of the most spectacular sunset spots in Portugal.</p>
+  </div>
+</section>
+
+<!-- DAY 8 -->
+<section class="day" id="day8">
+  <div class="day-head">
+    <span class="day-date">Day 8 — Friday, Sept 11</span>
+  </div>
+  <h2>Relaxed Final Algarve Day</h2>
+
+  <div class="segments">
+    <div class="segment">
+      <span class="segment-label">Option 1 — Relax</span>
+      <ul>
+        <li>Check out and sit at a beach!!</li>
+      </ul>
+      <p style="margin-top:10px;">Drive to your airport hotel in the late afternoon or evening.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="checklist-section" id="checklist">
+  <div class="checklist-inner">
+    <div class="hero-eyebrow">Before You Fly Home</div>
+    <h2>Cannot-Miss Checklist</h2>
+    <div class="checklist-grid">
+      <div class="check-item"><span class="box"></span>Pena Palace</div>
+      <div class="check-item"><span class="box"></span>Quinta da Regaleira</div>
+      <div class="check-item"><span class="box"></span>Cabo da Roca</div>
+      <div class="check-item"><span class="box"></span>Pastéis de Belém</div>
+      <div class="check-item"><span class="box"></span>Benagil Kayak Tour</div>
+      <div class="check-item"><span class="box"></span>Praia da Marinha</div>
+      <div class="check-item"><span class="box"></span>Praia do Carvalho</div>
+      <div class="check-item"><span class="box"></span>Seven Hanging Valleys Trail</div>
+      <div class="check-item"><span class="box"></span>Ponta da Piedade</div>
+      <div class="check-item"><span class="box"></span>Praia do Camilo</div>
+      <div class="check-item"><span class="box"></span>Lagos Old Town</div>
+      <div class="check-item"><span class="box"></span>Sagres</div>
+      <div class="check-item"><span class="box"></span>Cape St. Vincent Sunset</div>
+    </div>
+  </div>
+</section>
+
+<footer>PORTUGAL · SEPT 4–12, 2026 · LISBON → SINTRA → CARVOEIRO → LAGOS → SAGRES</footer>
+
+</body>
+</html>
