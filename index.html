@@ -29,69 +29,26 @@
   }
   h1,h2,h3,.display{ font-family:'Fraunces', serif; }
 
-  /* ---------- Tile motif (signature element) ---------- */
-  .tile-row{
-    display:flex;
-    height:14px;
-    width:100%;
-    overflow:hidden;
-  }
+  /* ---------- Tile motif ---------- */
+  .tile-row{ display:flex; height:14px; width:100%; overflow:hidden; }
   .tile-row span{
-    flex:1 0 28px;
-    height:14px;
-    background-image:
-      radial-gradient(circle at 50% 50%, transparent 5.5px, var(--azulejo) 6px, var(--azulejo) 6.5px, transparent 7px);
+    flex:1 0 28px; height:14px;
+    background-image:radial-gradient(circle at 50% 50%, transparent 5.5px, var(--azulejo) 6px, var(--azulejo) 6.5px, transparent 7px);
   }
   .tile-row.ochre span{
-    background-image:
-      radial-gradient(circle at 50% 50%, transparent 5.5px, var(--ochre) 6px, var(--ochre) 6.5px, transparent 7px);
+    background-image:radial-gradient(circle at 50% 50%, transparent 5.5px, var(--ochre) 6px, var(--ochre) 6.5px, transparent 7px);
   }
 
   /* ---------- Hero ---------- */
-  .hero{
-    position:relative;
-    background:var(--azulejo);
-    color:var(--white-tile);
-    padding:0 0 0 0;
-    overflow:hidden;
-  }
-  .hero-inner{
-    max-width:920px;
-    margin:0 auto;
-    padding:96px 32px 80px;
-    position:relative;
-    z-index:2;
-  }
-  .hero-eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:#B9D3D9;
-    margin-bottom:22px;
-  }
-  .hero h1{
-    font-size:clamp(42px, 7vw, 76px);
-    font-weight:600;
-    line-height:1.02;
-    margin:0 0 20px;
-    letter-spacing:-0.01em;
-  }
-  .hero h1 em{
-    font-style:italic;
-    font-weight:500;
-    color:var(--ochre);
-  }
-  .hero-dates{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:15px;
-    color:#DCE9EA;
-    letter-spacing:0.03em;
-  }
+  .hero{ position:relative; background:var(--azulejo); color:var(--white-tile); overflow:hidden; }
+  .hero-inner{ max-width:920px; margin:0 auto; padding:96px 32px 80px; position:relative; z-index:2; }
+  .hero-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#B9D3D9; margin-bottom:22px; }
+  .hero h1{ font-size:clamp(42px, 7vw, 76px); font-weight:600; line-height:1.02; margin:0 0 20px; letter-spacing:-0.01em; }
+  .hero h1 em{ font-style:italic; font-weight:500; color:var(--ochre); }
+  .hero-dates{ font-family:'IBM Plex Mono', monospace; font-size:15px; color:#DCE9EA; letter-spacing:0.03em; }
+  .hero-blurb{ margin-top:22px; max-width:52ch; font-size:16px; line-height:1.6; color:#DCE9EA; }
   .hero-tiles{
-    position:absolute;
-    inset:0;
-    opacity:0.14;
+    position:absolute; inset:0; opacity:0.14;
     background-image:
       radial-gradient(circle at 12.5% 25%, transparent 9px, #fff 10px, #fff 10.5px, transparent 11.5px),
       radial-gradient(circle at 37.5% 25%, transparent 9px, #fff 10px, #fff 10.5px, transparent 11.5px),
@@ -106,278 +63,117 @@
   }
 
   /* ---------- Sticky day nav ---------- */
-  .daynav{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:var(--white-tile);
-    border-bottom:1px solid var(--line);
-    overflow-x:auto;
-    white-space:nowrap;
-    -ms-overflow-style:none;
-    scrollbar-width:none;
-  }
+  .daynav{ position:sticky; top:0; z-index:50; background:var(--white-tile); border-bottom:1px solid var(--line); overflow-x:auto; white-space:nowrap; -ms-overflow-style:none; scrollbar-width:none; }
   .daynav::-webkit-scrollbar{ display:none; }
-  .daynav-inner{
-    display:inline-flex;
-    padding:0 24px;
-  }
-  .daynav a{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color:var(--azulejo);
-    text-decoration:none;
-    padding:16px 14px;
-    border-bottom:2px solid transparent;
-    opacity:0.65;
-    transition:opacity 0.15s, border-color 0.15s;
-  }
-  .daynav a:hover, .daynav a:focus-visible{
-    opacity:1;
-    border-bottom-color:var(--ochre);
-  }
+  .daynav-inner{ display:inline-flex; padding:0 24px; }
+  .daynav a{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--azulejo); text-decoration:none; padding:16px 14px; border-bottom:2px solid transparent; opacity:0.65; transition:opacity 0.15s, border-color 0.15s; }
+  .daynav a:hover, .daynav a:focus-visible{ opacity:1; border-bottom-color:var(--ochre); }
 
   /* ---------- Day sections ---------- */
-  .day{
-    max-width:920px;
-    margin:0 auto;
-    padding:72px 32px 8px;
-    scroll-margin-top:56px;
-  }
-  .day-head{
-    display:flex;
-    align-items:baseline;
-    gap:18px;
-    margin-bottom:6px;
-    flex-wrap:wrap;
-  }
-  .day-date{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--ochre);
-    font-weight:500;
-  }
-  .day h2{
-    font-size:clamp(28px, 4vw, 38px);
-    font-weight:600;
-    margin:2px 0 6px;
-    color:var(--azulejo-deep);
-    line-height:1.1;
-  }
-  .day-sub{
-    font-size:15px;
-    color:#5A5348;
-    font-style:italic;
-    margin:0 0 30px;
-    max-width:60ch;
-  }
-  .hotel-tag{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    background:var(--whitewash-2);
-    border:1px solid var(--line);
-    color:var(--azulejo-deep);
-    padding:6px 12px;
-    border-radius:100px;
-    margin-bottom:28px;
-  }
+  .day{ max-width:920px; margin:0 auto; padding:72px 32px 8px; scroll-margin-top:56px; }
+  .day-head{ display:flex; align-items:baseline; gap:18px; margin-bottom:6px; flex-wrap:wrap; }
+  .day-date{ font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ochre); font-weight:500; }
+  .day h2{ font-size:clamp(28px, 4vw, 38px); font-weight:600; margin:2px 0 6px; color:var(--azulejo-deep); line-height:1.1; }
+  .day-sub{ font-size:15px; color:#5A5348; font-style:italic; margin:0 0 30px; max-width:64ch; }
+  .hotel-tag{ display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; background:var(--whitewash-2); border:1px solid var(--line); color:var(--azulejo-deep); padding:6px 12px; border-radius:100px; margin:0 8px 28px 0; }
   .hotel-tag::before{ content:"⌂"; color:var(--ochre); font-size:14px; }
+  .hotel-addr{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:#7A7264; margin:-20px 0 28px; display:block; }
 
-  .segments{
-    display:grid;
-    gap:2px;
-    background:var(--line);
-    border:1px solid var(--line);
-    border-radius:10px;
-    overflow:hidden;
-    margin-bottom:20px;
-  }
-  .segment{
-    background:var(--white-tile);
-    padding:20px 22px;
-  }
-  .segment-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--teal);
-    margin-bottom:10px;
-    display:block;
-  }
-  .segment ul{
-    margin:0;
-    padding-left:0;
-    list-style:none;
-  }
-  .segment li{
-    position:relative;
-    padding-left:18px;
-    margin-bottom:8px;
-    font-size:15.5px;
-    line-height:1.5;
-    color:var(--ink);
-  }
+  .segments{ display:grid; gap:2px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+  .segment{ background:var(--white-tile); padding:20px 22px; }
+  .segment-label{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); margin-bottom:10px; display:block; }
+  .segment ul{ margin:0; padding-left:0; list-style:none; }
+  .segment li{ position:relative; padding-left:18px; margin-bottom:8px; font-size:15.5px; line-height:1.5; color:var(--ink); }
   .segment li:last-child{ margin-bottom:0; }
-  .segment li::before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:9px;
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    background:var(--ochre);
-  }
-  .segment p{
-    margin:0;
-    font-size:15.5px;
-    line-height:1.55;
-  }
+  .segment li::before{ content:""; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:var(--ochre); }
+  .segment p{ margin:0; font-size:15.5px; line-height:1.55; }
 
-  .booked{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    background:var(--azulejo);
-    color:#fff;
-    padding:3px 9px;
-    border-radius:5px;
-    margin-left:8px;
-    vertical-align:middle;
-  }
+  .booked{ display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; background:var(--azulejo); color:#fff; padding:3px 9px; border-radius:5px; margin-left:8px; vertical-align:middle; }
   .booked::before{ content:"✓"; }
-  .booking-link{
-    display:block;
-    margin-top:10px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:var(--teal);
-    word-break:break-all;
-    text-decoration:none;
-    border-bottom:1px dotted var(--teal);
-    padding-bottom:1px;
-  }
+  .booking-link{ display:block; margin-top:10px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--teal); word-break:break-all; text-decoration:none; border-bottom:1px dotted var(--teal); padding-bottom:1px; }
   .booking-link:hover{ color:var(--ochre); border-bottom-color:var(--ochre); }
 
-  .options{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:2px;
-  }
-  .options .opt{
-    font-size:14px;
-    background:var(--whitewash-2);
-    border:1px solid var(--line);
-    padding:6px 12px;
-    border-radius:100px;
-  }
-  .opt .note{
-    display:block;
-    font-size:12px;
-    color:#7A7264;
-    font-style:italic;
-  }
+  .options{ display:flex; flex-wrap:wrap; gap:8px; margin-top:2px; }
+  .options .opt{ font-size:14px; background:var(--whitewash-2); border:1px solid var(--line); padding:6px 12px; border-radius:100px; }
+  .opt .note{ display:block; font-size:12px; color:#7A7264; font-style:italic; }
 
-  .callout{
-    background:linear-gradient(135deg, var(--teal), var(--azulejo));
-    color:#fff;
-    border-radius:10px;
-    padding:22px 24px;
-    margin:20px 0;
-  }
+  .callout{ background:linear-gradient(135deg, var(--teal), var(--azulejo)); color:#fff; border-radius:10px; padding:22px 24px; margin:20px 0; }
   .callout .segment-label{ color:#CFE7E8; }
   .callout p{ margin:0; font-size:16px; line-height:1.55; }
   .callout strong{ font-family:'Fraunces', serif; font-weight:600; font-size:18px; }
 
-  .day-divider{
-    padding:36px 0 0;
+  .transit-note{
+    background:var(--whitewash-2);
+    border-left:3px solid var(--ochre);
+    padding:16px 20px;
+    border-radius:0 8px 8px 0;
+    margin-bottom:20px;
+    font-size:14.5px;
+    line-height:1.6;
+    color:#4A4438;
   }
+  .transit-note strong{ color:var(--azulejo-deep); }
 
-  /* ---------- Checklist ---------- */
-  .checklist-section{
+  /* ---------- Cocktail section ---------- */
+  .cocktail-section{
     background:var(--azulejo-deep);
     color:var(--white-tile);
     margin-top:80px;
-    padding:80px 32px 100px;
+    padding:80px 32px 90px;
   }
-  .checklist-inner{
-    max-width:920px;
-    margin:0 auto;
-  }
-  .checklist-inner .hero-eyebrow{ color:#9FC6CC; }
-  .checklist-inner h2{
-    font-size:clamp(30px,5vw,44px);
-    font-weight:600;
-    margin:8px 0 40px;
-  }
-  .checklist-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
-    gap:1px;
-    background:rgba(255,255,255,0.14);
-    border:1px solid rgba(255,255,255,0.14);
+  .cocktail-inner{ max-width:920px; margin:0 auto; }
+  .cocktail-inner .hero-eyebrow{ color:#9FC6CC; }
+  .cocktail-inner h2{ font-size:clamp(30px,5vw,44px); font-weight:600; margin:8px 0 14px; }
+  .cocktail-inner > p{ max-width:60ch; color:#CFE0E2; line-height:1.6; margin-bottom:44px; font-size:15.5px; }
+  .cocktail-list{ display:grid; gap:1px; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.14); border-radius:10px; overflow:hidden; }
+  .cocktail-item{ background:var(--azulejo-deep); padding:22px 24px; display:flex; gap:18px; }
+  .cocktail-rank{ font-family:'Fraunces', serif; font-size:26px; font-weight:600; color:var(--ochre); flex:none; width:34px; }
+  .cocktail-item h3{ margin:0 0 4px; font-size:18px; font-weight:600; }
+  .cocktail-item .tagline{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; color:#8FC1C6; margin-bottom:8px; }
+  .cocktail-item p{ margin:0; font-size:14.5px; line-height:1.6; color:#D9E4E5; }
+  .cocktail-pick{
+    margin-top:32px;
+    background:rgba(193,122,62,0.16);
+    border:1px solid rgba(193,122,62,0.4);
     border-radius:10px;
-    overflow:hidden;
+    padding:20px 24px;
+    font-size:14.5px;
+    line-height:1.6;
   }
-  .check-item{
-    background:var(--azulejo-deep);
-    padding:18px 20px;
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-    font-size:15px;
-  }
-  .check-item .box{
-    flex:none;
-    width:18px;
-    height:18px;
-    border:1.5px solid var(--ochre);
-    border-radius:4px;
-    margin-top:2px;
-    position:relative;
-  }
-  .check-item .box::after{
-    content:"";
-    position:absolute;
-    left:3px;
-    top:-1px;
-    width:5px;
-    height:9px;
-    border-right:2px solid var(--ochre);
-    border-bottom:2px solid var(--ochre);
-    transform:rotate(45deg);
-  }
+  .cocktail-pick strong{ color:var(--ochre); font-family:'Fraunces', serif; font-size:16px; }
 
-  footer{
-    text-align:center;
-    padding:40px 24px 60px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:#8A8272;
-  }
+  /* ---------- Checklist ---------- */
+  .checklist-section{ background:var(--white-tile); padding:80px 32px 20px; }
+  .checklist-inner{ max-width:920px; margin:0 auto; }
+  .checklist-inner .hero-eyebrow{ color:var(--teal); }
+  .checklist-inner h2{ font-size:clamp(30px,5vw,44px); font-weight:600; margin:8px 0 40px; color:var(--azulejo-deep); }
+  .checklist-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .check-item{ background:var(--white-tile); padding:18px 20px; display:flex; align-items:flex-start; gap:12px; font-size:15px; }
+  .check-item .box{ flex:none; width:18px; height:18px; border:1.5px solid var(--ochre); border-radius:4px; margin-top:2px; position:relative; }
+  .check-item .box::after{ content:""; position:absolute; left:3px; top:-1px; width:5px; height:9px; border-right:2px solid var(--ochre); border-bottom:2px solid var(--ochre); transform:rotate(45deg); }
+
+  /* ---------- Links directory ---------- */
+  .links-section{ max-width:920px; margin:0 auto; padding:80px 32px 100px; }
+  .links-section .hero-eyebrow{ color:var(--teal); }
+  .links-section h2{ font-size:clamp(30px,5vw,44px); font-weight:600; margin:8px 0 40px; color:var(--azulejo-deep); }
+  .link-grid{ display:grid; gap:2px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .link-item{ background:var(--white-tile); padding:18px 22px; display:flex; flex-direction:column; gap:4px; }
+  .link-item .name{ font-weight:600; font-size:15.5px; color:var(--azulejo-deep); }
+  .link-item a{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--teal); text-decoration:none; word-break:break-all; }
+  .link-item a:hover{ color:var(--ochre); }
+
+  footer{ text-align:center; padding:40px 24px 60px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:#8A8272; background:var(--white-tile); }
 
   @media (max-width:600px){
     .hero-inner{ padding:64px 20px 56px; }
     .day{ padding:52px 20px 4px; }
     .segments{ border-radius:8px; }
     .segment{ padding:16px 16px; }
-    .checklist-section{ padding:60px 20px 72px; }
+    .checklist-section, .links-section, .cocktail-section{ padding-left:20px; padding-right:20px; }
+    .cocktail-item{ flex-direction:column; gap:6px; }
   }
 
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-  }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
 </style>
 </head>
 <body>
@@ -388,6 +184,7 @@
     <div class="hero-eyebrow">A Nine-Day Route Through Portugal</div>
     <h1>Lisbon to<br><em>the Algarve</em></h1>
     <div class="hero-dates">SEPTEMBER 4 &nbsp;–&nbsp; 12, 2026</div>
+    <p class="hero-blurb">A sun-soaked week of tiled streets, cliffside beaches, palace mornings, seafood lunches, and sunset cocktails. Lisbon · Sintra · Carvoeiro · Lagos · Sagres.</p>
   </div>
 </div>
 <div class="tile-row">
@@ -404,25 +201,26 @@
     <a href="#day6">Wed 9 · Benagil</a>
     <a href="#day7">Thu 10 · Sagres</a>
     <a href="#day8">Fri 11 · Algarve</a>
+    <a href="#cocktails">Cocktails</a>
     <a href="#checklist">Checklist</a>
+    <a href="#links">All Links</a>
   </div>
 </nav>
 
 <!-- DAY 1 -->
 <section class="day" id="day1">
-  <div class="day-head">
-    <span class="day-date">Day 1 — Friday, Sept 4</span>
-  </div>
+  <div class="day-head"><span class="day-date">Day 1 — Friday, Sept 4</span></div>
   <h2>Arrive in Lisbon</h2>
   <p class="day-sub">Your hotel sits in one of the best locations in the city — almost everything today is walkable.</p>
-  <div class="hotel-tag">Rossio Plaza Hotel</div>
+  <a class="hotel-tag" href="https://rossioplazahotel.com/?utm_source=chatgpt.com" target="_blank" rel="noopener">Rossio Plaza Hotel</a>
+  <span class="hotel-addr">R. Áurea 266, 1100-581 Lisboa, Portugal</span>
 
   <div class="segments">
     <div class="segment">
       <span class="segment-label">Afternoon</span>
       <ul>
         <li>Check into the hotel and settle in.</li>
-        <li>Walk through Rossio Square — one minute from the hotel.</li>
+        <li>Walk through Rossio Square — about 1 minute from the hotel.</li>
         <li>Explore Rua Augusta and the pedestrian shopping streets.</li>
         <li>Walk through the Arco da Rua Augusta.</li>
         <li>Continue to Praça do Comércio along the waterfront.</li>
@@ -437,18 +235,17 @@
       </ul>
     </div>
     <div class="segment">
-      <span class="segment-label">Dinner — Recommended</span>
+      <span class="segment-label">Dinner</span>
       <div class="options">
-        <span class="opt">Ramiro</span>
-        <span class="opt">Prado</span>
-        <span class="opt">Taberna Sal Grosso</span>
+        <span class="opt">See what the hotel recommends</span>
+        <span class="opt">Tom La Da Ca <span class="note">15 min walk from hotel — Alex's recco</span></span>
       </div>
     </div>
     <div class="segment">
       <span class="segment-label">Evening</span>
       <ul>
-        <li>Walk through Bairro Alto.</li>
-        <li>Walk through Pink Street.</li>
+        <li>Bairro Alto</li>
+        <li>Pink Street</li>
       </ul>
     </div>
   </div>
@@ -456,9 +253,7 @@
 
 <!-- DAY 2 -->
 <section class="day" id="day2">
-  <div class="day-head">
-    <span class="day-date">Day 2 — Saturday, Sept 5</span>
-  </div>
+  <div class="day-head"><span class="day-date">Day 2 — Saturday, Sept 5</span></div>
   <h2>Lisbon Highlights</h2>
 
   <div class="segments">
@@ -470,6 +265,7 @@
     <div class="segment">
       <span class="segment-label">Afternoon — Explore</span>
       <ul>
+        <li>Tile Factory</li>
         <li>LX Factory</li>
         <li>MAAT waterfront area</li>
         <li>Riverside promenade</li>
@@ -482,7 +278,7 @@
     <div class="segment">
       <span class="segment-label">Dinner</span>
       <div class="options">
-        <span class="opt">Tom La Da Ca <span class="note">15 min walk from hotel — Alex's recco</span></span>
+        <span class="opt">Cafe de Sao Bento <span class="note">7:30 PM</span></span>
         <span class="opt">Bairro do Avillez</span>
         <span class="opt">Tapisco</span>
         <span class="opt">Mini Bar</span>
@@ -493,11 +289,13 @@
 
 <!-- DAY 3 -->
 <section class="day" id="day3">
-  <div class="day-head">
-    <span class="day-date">Day 3 — Sunday, Sept 6</span>
-  </div>
+  <div class="day-head"><span class="day-date">Day 3 — Sunday, Sept 6</span></div>
   <h2>Sintra Day Trip</h2>
   <p class="day-sub">Leave Lisbon around 8:00 AM.</p>
+
+  <div class="transit-note">
+    <strong>Getting there:</strong> Go to Rossio Station and take the direct CP train to Sintra — about 40 minutes, running roughly every 20 minutes. Tickets run €2–3 each way, purchased at the station. From Sintra Station, Bus 434 serves the historic center, Moorish Castle, and Pena Palace. Uber/Bolt or a taxi also works, though traffic can build later in the morning.
+  </div>
 
   <div class="segments">
     <div class="segment">
@@ -520,8 +318,7 @@
     <div class="segment">
       <span class="segment-label">Dinner</span>
       <div class="options">
-        <span class="opt">Time Out Market</span>
-        <span class="opt">Ramiro <span class="note">if missed on Day 1</span></span>
+        <span class="opt">Magnolia <span class="note">8 PM — Praça das Flores 43, 1200-192 Lisboa</span></span>
       </div>
     </div>
   </div>
@@ -529,27 +326,25 @@
 
 <!-- DAY 4 -->
 <section class="day" id="day4">
-  <div class="day-head">
-    <span class="day-date">Day 4 — Monday, Sept 7</span>
-  </div>
+  <div class="day-head"><span class="day-date">Day 4 — Monday, Sept 7</span></div>
   <h2>Travel to Carvoeiro</h2>
   <p class="day-sub">Drive from Lisbon to Carvoeiro — approximately 3 hours.</p>
-  <div class="hotel-tag">Tivoli Carvoeiro Algarve Resort</div>
+  <a class="hotel-tag" href="https://www.tivolihotels.com/en/tivoli-carvoeiro-algarve-resort?utm_source=chatgpt.com" target="_blank" rel="noopener">Tivoli Carvoeiro Algarve Resort</a>
 
   <div class="segments">
     <div class="segment">
       <span class="segment-label">Lunch in Carvoeiro</span>
       <ul>
+        <li>Restaurante O Castelo — excellent seafood with a view over the beach.</li>
         <li>A Boneca Bar — arguably the most scenic spot, perched on the cliffs by the Algar Seco rock formations.</li>
         <li>Boneca Bar &amp; Restaurant — perfect for drinks and lighter fare with incredible views.</li>
         <li>O Pátio — great traditional Portuguese dishes.</li>
-        <li>Restaurante O Castelo — excellent seafood with a view over the beach.</li>
       </ul>
     </div>
     <div class="segment">
       <span class="segment-label">Explore</span>
       <ul>
-        <li>Carvoeiro Beach walk — cafés directly on the beach, loungers for rent.</li>
+        <li>Carvoeiro Beach — cafés directly on the beach, loungers for rent.</li>
         <li>Algar Seco</li>
         <li>Boneca Cave</li>
         <li>The cliff boardwalk</li>
@@ -558,32 +353,31 @@
   </div>
 
   <div class="callout">
-    <span class="segment-label">Sunset</span>
+    <span class="segment-label">Sunset / Dinner</span>
     <p><strong>Tivoli Sky Bar</strong> — dinner @ 7:30 PM</p>
   </div>
 </section>
 
 <!-- DAY 5 -->
 <section class="day" id="day5">
-  <div class="day-head">
-    <span class="day-date">Day 5 — Tuesday, Sept 8</span>
-  </div>
+  <div class="day-head"><span class="day-date">Day 5 — Tuesday, Sept 8</span></div>
   <h2>Lagos Lunch &amp; Beach Sitting</h2>
 
   <div class="segments">
     <div class="segment">
-      <span class="segment-label">Morning — Head to Lagos</span>
+      <span class="segment-label">Morning</span>
       <ul>
+        <li>Head to Lagos.</li>
         <li>Explore old town Lagos.</li>
         <li>Have lunch in Lagos.</li>
       </ul>
     </div>
     <div class="segment">
-      <span class="segment-label">Afternoon — Visit One Beach</span>
+      <span class="segment-label">Afternoon — Pick One Beach</span>
       <ul>
         <li>Praia do Camilo <span style="color:#7A7264; font-style:italic;">— loungers sell out early; restaurant at top of stairs</span></li>
-        <li>Praia Dona Ana <span style="color:#7A7264; font-style:italic;">— can rent loungers, has restaurants</span></li>
-        <li>Praia dos Estudantes <span style="color:#7A7264; font-style:italic;">— small beach, nothing to rent</span></li>
+        <li>Praia Dona Ana <span style="color:#7A7264; font-style:italic;">— loungers available, restaurants nearby</span></li>
+        <li>Praia dos Estudantes <span style="color:#7A7264; font-style:italic;">— small beach; nothing to rent</span></li>
       </ul>
     </div>
     <div class="segment">
@@ -599,29 +393,27 @@
 
 <!-- DAY 6 -->
 <section class="day" id="day6">
-  <div class="day-head">
-    <span class="day-date">Day 6 — Wednesday, Sept 9</span>
-  </div>
+  <div class="day-head"><span class="day-date">Day 6 — Wednesday, Sept 9</span></div>
   <h2>Benagil Kayak Tour + Beach Hopping</h2>
   <p class="day-sub">Move to Lagos today.</p>
-  <div class="hotel-tag">Água Hotels Lagos Bay</div>
+  <a class="hotel-tag" href="https://www.aguahotels.pt/en/lagos-bay/?utm_source=chatgpt.com" target="_blank" rel="noopener">Água Hotels Lagos Bay</a>
 
   <div class="segments">
     <div class="segment">
       <span class="segment-label">8:30 AM — Benagil Kayak Tour</span>
       <p><span class="booked">Booked</span></p>
       <a class="booking-link" href="https://www.tripadvisor.com/AttractionProductReview-g189115-d23959713-Exclusive_Small_Group_Kayak_Tour_to_Benagil_Caves_with_4K_Photos-Carvoeiro_Faro_Di.html" target="_blank" rel="noopener">tripadvisor.com — Small Group Kayak Tour to Benagil Caves →</a>
-      <p style="margin-top:12px; font-size:14px; color:#5A5348;">You'll see: Benagil Cave, sea arches, hidden beaches, and coastal caves. Also near Praia do Carvalho (beach), reached through a cliff tunnel entrance.</p>
+      <p style="margin-top:12px; font-size:14px; color:#5A5348;">You'll see Benagil Cave, sea arches, hidden beaches, and coastal caves. Also near Praia do Carvalho, known for its cliff-tunnel entrance.</p>
     </div>
     <div class="segment">
       <span class="segment-label">Late Morning</span>
-      <p>Visit the Seven Hanging Valleys Trail and hit Praia da Marinha beach — a small amount of rentals; arrive early.</p>
+      <p>Visit the Seven Hanging Valleys Trail and Praia da Marinha — rentals are limited, so arrive early.</p>
     </div>
   </div>
 
   <div class="callout">
     <span class="segment-label">Praia da Marinha</span>
-    <p>Often considered the most beautiful beach in Portugal. <strong>Don't miss:</strong> the heart-shaped rock viewpoint, swimming, and the cliff-top views.</p>
+    <p>Heart-shaped rock viewpoint, swimming, and cliff-top views.</p>
   </div>
 
   <div class="segments">
@@ -634,9 +426,7 @@
 
 <!-- DAY 7 -->
 <section class="day" id="day7">
-  <div class="day-head">
-    <span class="day-date">Day 7 — Thursday, Sept 10</span>
-  </div>
+  <div class="day-head"><span class="day-date">Day 7 — Thursday, Sept 10</span></div>
   <h2>Sagres &amp; the Wild West Coast</h2>
   <p class="day-sub">Drive approximately 40 minutes west.</p>
 
@@ -661,18 +451,71 @@
 
 <!-- DAY 8 -->
 <section class="day" id="day8">
-  <div class="day-head">
-    <span class="day-date">Day 8 — Friday, Sept 11</span>
-  </div>
+  <div class="day-head"><span class="day-date">Day 8 — Friday, Sept 11</span></div>
   <h2>Relaxed Final Algarve Day</h2>
 
   <div class="segments">
     <div class="segment">
       <span class="segment-label">Option 1 — Relax</span>
-      <ul>
-        <li>Check out and sit at a beach!!</li>
-      </ul>
-      <p style="margin-top:10px;">Drive to your airport hotel in the late afternoon or evening.</p>
+      <p>12:30 PM lunch at <strong style="font-family:'Fraunces', serif; font-weight:600;">Caniço</strong></p>
+      <p style="font-size:13.5px; color:#7A7264; margin-top:4px;">Aldeamento Prainha Club, R. Praia dos Três Irmãos, 8500-072 Alvor, Portugal</p>
+      <a class="booking-link" href="https://maps.google.com/?cid=4542216527668443350" target="_blank" rel="noopener">Google Maps — Caniço →</a>
+      <p style="margin-top:16px;">Drive to your airport hotel in the late afternoon or evening.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COCKTAILS -->
+<section class="cocktail-section" id="cocktails">
+  <div class="cocktail-inner">
+    <div class="hero-eyebrow">For Any Evening in Town</div>
+    <h2>Lisbon Cocktail Shortlist</h2>
+    <p>The can't-miss list — ten bars worth working into your evenings, ranked.</p>
+    <div class="cocktail-list">
+      <div class="cocktail-item">
+        <span class="cocktail-rank">1</span>
+        <div><h3>Red Frog</h3><div class="tagline">The Big One</div><p>Serious, inventive cocktails with a speakeasy atmosphere. Hidden entrance, intimate room, excellent technique — consistently ranked among Lisbon's best. Book ahead if possible.</p></div>
+      </div>
+      <div class="cocktail-item">
+        <span class="cocktail-rank">2</span>
+        <div><h3>Quattro Teste</h3><div class="tagline">Best Insider Pick</div><p>Creative cocktails without the pretension. Small and inventive — the Basque burnt-cheesecake cocktail is a signature people rave about. Great if you like bartenders who talk you through the menu.</p></div>
+      </div>
+      <div class="cocktail-item">
+        <span class="cocktail-rank">3</span>
+        <div><h3>Foxtrot</h3><div class="tagline">Best Atmosphere</div><p>Old-school Lisbon in a gorgeous, dark Art Deco-ish space. More about atmosphere and properly made classics than experimental mixology — a Lisbon institution dating back decades.</p></div>
+      </div>
+      <div class="cocktail-item">
+        <span class="cocktail-rank">4</span>
+        <div><h3>Pavilhão Chinês</h3><div class="tagline">The Most Fun</div><p>A cabinet-of-curiosities setting with antique toys, collections, and multiple rooms. Cocktails are good, but the experience is the star.</p></div>
+      </div>
+      <div class="cocktail-item">
+        <span class="cocktail-rank">5</span>
+        <div><h3>QG Atelier Bar</h3><div class="tagline">Hidden Gem</div><p>Tiny, intimate, bartender-driven, with a focus on classics and customized drinks — worth choosing over a trendy tourist bar.</p></div>
+      </div>
+      <div class="cocktail-item">
+        <span class="cocktail-rank">6</span>
+        <div><h3>Imprensa Cocktail and Oyster Bar</h3><div class="tagline">Cocktails + Oysters</div><p>A sophisticated early-evening stop — cocktails plus something salty to eat. Small, atmospheric, particularly good for a couple.</p></div>
+      </div>
+      <div class="cocktail-item">
+        <span class="cocktail-rank">7</span>
+        <div><h3>Catfish Cocktail Bar</h3><div class="tagline">Current Local Favorite</div><p>Creative drinks and a relaxed local feel — recognized as Bar of the Year in the 2026 Prémios Mesa Marcada awards cycle.</p></div>
+      </div>
+      <div class="cocktail-item">
+        <span class="cocktail-rank">8</span>
+        <div><h3>The Royal Vessel Bar</h3><div class="tagline">Sexy Late-Night Option</div><p>Intimate, dark, old-world atmosphere with a maritime theme, good cocktails, and a nice late-night vibe.</p></div>
+      </div>
+      <div class="cocktail-item">
+        <span class="cocktail-rank">9</span>
+        <div><h3>Procópio</h3><div class="tagline">Old Lisbon</div><p>Open since 1972, with an old-world Art Nouveau interior — history and classic cocktails; the bar itself feels like part of Lisbon's history.</p></div>
+      </div>
+      <div class="cocktail-item">
+        <span class="cocktail-rank">10</span>
+        <div><h3>Bar A Paródia</h3><div class="tagline">The Deep-Cut</div><p>A genuinely old-school, slightly secretive experience dating to 1974, with classic cocktails and an eccentric atmosphere — less polished than Red Frog, but arguably more characterful.</p></div>
+      </div>
+    </div>
+    <div class="cocktail-pick">
+      <strong>If you only have time for 3:</strong> Red Frog → Quattro Teste → Foxtrot.<br>
+      <strong>If atmosphere matters more than technique:</strong> swap Quattro Teste for Pavilhão Chinês.
     </div>
   </div>
 </section>
@@ -696,6 +539,42 @@
       <div class="check-item"><span class="box"></span>Lagos Old Town</div>
       <div class="check-item"><span class="box"></span>Sagres</div>
       <div class="check-item"><span class="box"></span>Cape St. Vincent Sunset</div>
+    </div>
+  </div>
+</section>
+
+<!-- LINKS -->
+<section class="links-section" id="links">
+  <div class="hero-eyebrow">Quick Reference</div>
+  <h2>Booking &amp; Hotel Links</h2>
+  <div class="link-grid">
+    <div class="link-item">
+      <span class="name">Rossio Plaza Hotel</span>
+      <a href="https://rossioplazahotel.com/?utm_source=chatgpt.com" target="_blank" rel="noopener">rossioplazahotel.com</a>
+    </div>
+    <div class="link-item">
+      <span class="name">Lisbon Walking Tour — GetYourGuide</span>
+      <a href="https://www.getyourguide.com/lisbon-l42/lisbon-essential-tour-history-stories-lifestyle-t46394?ranking_uuid=768c019f-6399-4d6d-ab97-c1760f32dfd0&q=Walking+tours,+Lisbon&date_from=2026-09-06" target="_blank" rel="noopener">getyourguide.com — Lisbon Essential Tour</a>
+    </div>
+    <div class="link-item">
+      <span class="name">Pena Palace Booking / Payment Result</span>
+      <a href="https://bilheteira.parquesdesintra.pt/paymentresult?paymentType=CreditCard&id=s2aUQDqBX2QMFTmYCD2v&resourcePath=/v1/checkouts/s2aUQDqBX2QMFTmYCD2v/payment" target="_blank" rel="noopener">bilheteira.parquesdesintra.pt</a>
+    </div>
+    <div class="link-item">
+      <span class="name">Tivoli Carvoeiro Algarve Resort</span>
+      <a href="https://www.tivolihotels.com/en/tivoli-carvoeiro-algarve-resort?utm_source=chatgpt.com" target="_blank" rel="noopener">tivolihotels.com</a>
+    </div>
+    <div class="link-item">
+      <span class="name">Benagil Kayak Tour — Tripadvisor</span>
+      <a href="https://www.tripadvisor.com/AttractionProductReview-g189115-d23959713-Exclusive_Small_Group_Kayak_Tour_to_Benagil_Caves_with_4K_Photos-Carvoeiro_Faro_Di.html" target="_blank" rel="noopener">tripadvisor.com — Benagil Caves Kayak Tour</a>
+    </div>
+    <div class="link-item">
+      <span class="name">Água Hotels Lagos Bay</span>
+      <a href="https://www.aguahotels.pt/en/lagos-bay/?utm_source=chatgpt.com" target="_blank" rel="noopener">aguahotels.pt</a>
+    </div>
+    <div class="link-item">
+      <span class="name">Caniço — Google Maps</span>
+      <a href="https://maps.google.com/?cid=4542216527668443350" target="_blank" rel="noopener">maps.google.com</a>
     </div>
   </div>
 </section>
